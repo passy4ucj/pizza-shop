@@ -14,9 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Product.init({
-    product_name: DataTypes.STRING
+    product_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
+    tableName: 'products',
     modelName: 'Product',
   });
   return Product;
