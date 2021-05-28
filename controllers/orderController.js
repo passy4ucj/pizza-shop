@@ -106,7 +106,26 @@ const deleteOrder = asyncHandler(async (req, res) => {
             success: true
         })
     } catch (error) {
-        
+        res.status(500)
+        throw new Error('No orders')
+    }
+})
+
+const getOrder = asyncHandler(async (req, res) => {
+    try {
+        const order = await Order.findAll({
+            where: {
+                orderID: req.params.id
+            }
+        })
+
+        res.json({
+            success: true,
+            order
+        })
+    } catch (error) {
+        res.status(500)
+        throw new Error('No order')
     }
 })
 
@@ -116,5 +135,6 @@ module.exports = {
     createOrder,
     updateOrder,
     getOrders,
-    deleteOrder
+    deleteOrder,
+    getOrder
 }
