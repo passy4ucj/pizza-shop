@@ -13,7 +13,7 @@ const app = express()
 dotenv.config({ path: './config/env.env' })
 
 // Route files
-
+const orders = require('./routes/orderRoutes')
 
 // Using JSON parser
 app.use(express.json())
@@ -24,7 +24,7 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 // Mount routers
-
+app.use('/api/v1/orders', orders)
 
 app.get('/', (req, res) => {
     res.json({
