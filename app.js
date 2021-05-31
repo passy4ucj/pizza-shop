@@ -1,4 +1,3 @@
-const app = require('./app')
 const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
@@ -40,8 +39,5 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 // App Listener
-app.listen(PORT, async () => {
-    console.log(`App Listening on PORT ${PORT}`)
-    await sequelize.authenticate()
-    console.log('Database Connected!')
-});
+
+module.exports = app
